@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" name="Jasper Versantvoort" content="Afvink 4">
-    <title>DNA RNA eiwit check</title>
+    <meta charset="UTF-8" name="Christel van Haren"
+          content="Afvinkopdracht 4">
+    <title>Afvinkopdracht 4</title>
+    <link rel="stylesheet" href="../static/afvink4.css">
 </head>
+
 <body>
 
-<h1>Kijk of de gegeven sequentie DNA, RNA of eiwit is</h1>
-<form method="get">
-    <p>
-        Voer sequentie in:
-        <input type="text" name=seq>
+    <h1>DNA, RNA of eiwit?</h1>
+        <form method="get">
+            <p>
+                Geef een sequentie:
+                <label>
+                    <input type="text" name=seq>
+                    <br>
+                    <button type="submit">Translatie</button>
+                </label>
 
-
-    </p>
-    <p> soort is: {{ soort }}
             </p>
-    <p>
-         {{ een }}
+            <p>Geeft aan of het DNA, RNA of een eiwit is: <br> {{ soort }}</p>
+            <p>{{ een }}</p>
+            <p>
+                {% if soort == "Eiwit" %}
+                  <a href={{ twee }}>blast link</a>
+                {% else %}
+                {{ twee }}
+                {% endif %}
             </p>
-    <p>
-        {% if soort == "Eiwit" %}
-          <a href={{ twee }}>blast link</a>
-        {% else %}
-        {{ twee }}
-        {% endif %}
-    </p>
 
-</form>
-
-
+        </form>
 
 </body>
 </html>
