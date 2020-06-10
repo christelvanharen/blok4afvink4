@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="Jasper Versantvoort" content="Afvink 4">
+    <title>DNA RNA eiwit check</title>
+</head>
+<body>
+
+<h1>Kijk of de gegeven sequentie DNA, RNA of eiwit is</h1>
+<form method="get">
+    <p>
+        Voer sequentie in:
+        <input type="text" name=seq>
+
+
+    </p>
+    <p> soort is: {{ soort }}
+            </p>
+    <p>
+         {{ een }}
+            </p>
+    <p>
+        {% if soort == "Eiwit" %}
+          <a href={{ twee }}>blast link</a>
+        {% else %}
+        {{ twee }}
+        {% endif %}
+    </p>
+
+</form>
+
+
+
+</body>
+</html>
