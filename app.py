@@ -8,9 +8,9 @@ app = Flask(__name__)
 @app.route('/')
 def web_pagina():
     """
-    Haalt de ingevoerde seq op van de webpagina, en kijkt of dit DNA, RNA
-    of eiwit is. En voert hier de gewenste acties op uit.
-    :return: De web applicatie
+    Als de sequentie wordt ingevoerd, dan wordt dit vertaald naar de
+    gewenste soort. Als het een eiwit is, dan kan deze geblast worden.
+    :return: De web applicatie dna, rna of eiwit.
     """
     seq = request.args.get("seq", '')
     seq = seq.upper()
@@ -29,7 +29,7 @@ def web_pagina():
     elif check_eiwit(seq):
         return render_template("afvink4.html",
                                soort='Eiwit',
-                               een="klik op de link en druk op blast",
+                               een="Klik op de link en druk op BLAST.",
                                twee="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&QUERY=" + str(seq))
     else:
         return render_template("afvink4.html",
@@ -40,8 +40,8 @@ def web_pagina():
 
 def check_dna(seq):
     """
-    :param seq: De sequentie opgehaald van de pagina
-    :return: True/False of het DNA is of niet
+    :param seq: De sequentie
+    :return: Kijkt of het DNA is of niet.
     """
     for i in seq:
         if i not in ['A','C', 'G','T']:
@@ -50,8 +50,8 @@ def check_dna(seq):
 
 def check_rna(seq):
     """
-    :param seq: De sequentie opgehaald van de pagina
-    :return: True/False of het RNA is of niet
+    :param seq: De sequentie
+    :return: Kijkt of het RNA is of niet.
     """
     for i in seq:
         if i not in ['A', 'C', 'G', 'U']:
@@ -60,13 +60,13 @@ def check_rna(seq):
 
 def check_eiwit(seq):
     """
-    :param seq: De sequentie opgehaald van de pagina
-    :return: True/False of het eiwit is of niet
+    :param seq: De sequentie
+    :return: Kijkt of het een eiwit is of niet.
     """
-    amino = ["A", "R", "N", "D", "B", "C", "E", "Q", "Z", "G", "H",
-             "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V", "X"]
     for i in seq:
-        if i not in amino:
+        if i not in ["A", "R", "N", "D", "B", "C", "E", "Q", "Z",
+                     "G", "H", "I", "L", "K", "M", "F", "P", "S",
+                     "T", "W", "Y", "V", "X"]:
             return False
     return True
 

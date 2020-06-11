@@ -9,23 +9,24 @@
 </head>
 
 <body>
-
-    <h1>DNA, RNA of eiwit?</h1>
         <form method="get">
+        <h1>DNA, RNA of eiwit?</h1>
             <p>
                 Geef een sequentie:
                 <label>
                     <input type="text" name=seq>
                     <br>
-                    <button type="submit">Translatie</button>
+                    <button type="submit">Transleren</button>
                 </label>
 
             </p>
+
             <p>Geeft aan of het DNA, RNA of een eiwit is: <br> {{ soort }}</p>
             <p>{{ een }}</p>
+
             <p>
                 {% if soort == "Eiwit" %}
-                  <a href={{ twee }}>blast link</a>
+                  <a href={{ twee }}>BLAST</a>
                 {% else %}
                 {{ twee }}
                 {% endif %}
